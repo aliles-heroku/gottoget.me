@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Got To Get</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <a href="https://github.com/aliles/gottoget.me">
+            <img style="position: absolute; top: 0; right: 0; border: 0;"
+                 src="//s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"
+                 alt="Fork me on GitHub">
+        </a>
+
+        <div class="container">
+            <div class="page-header">
+                <h1>Got To Get <small>me</small></h1>
+                <p>
+                    Download an internet resource and encoded it in this web
+                    page as using
+                    <a href="http://en.wikipedia.org/wiki/Data_URI_scheme">
+                        Data URIs
+                    </a>
+                </p>
+            </div>
+{% if url and datauri %}
+            <div class="alert alert-success">
+                <b>Congratulations!</b>
+                Your resource has been encoded in this page.<br/>
+                <a href="{{ datauri }}">{{ url }}</a>
+            </div>
+{% elif url and not datauri %}
+            <div class="alert alert-error">
+                <b>Sorry.</b><br/>
+                There was a problem with that resource.
+            </div>
+{% else %}
+            <div class="alert alert-info">
+                <b>Waiting.</b><br/>
+                For you to choose an internet resource.
+            </div>
+{% endif %}
+            <form method="post">
+                <legend>Provide An URL</legend>
+                <div class="input-append">
+                    <input name="url" class="span3" id="appendedInputButton" type="text" placeholder="http://…">
+                    <button class="btn" type="submit">Get Me</button>
+                </div>
+                <span class="help-block">
+                    Enter the URL of an internet resource to embed in this
+                    page.
+                </span>
+            </form>
+        </div>
+    </body>
+</html>
